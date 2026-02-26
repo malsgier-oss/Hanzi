@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "9NHI8nXRtpI=",
+  "success": true,
+  "projectFilePath": "D:\\HanziLearn\\HanziOverlay\\HanziOverlay.Core\\HanziOverlay.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\moha9\\.nuget\\packages\\npinyin.core\\3.0.0\\npinyin.core.3.0.0.nupkg.sha512",
+    "C:\\Users\\moha9\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512",
+    "C:\\Users\\moha9\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.24\\microsoft.netcore.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\moha9\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.24\\microsoft.windowsdesktop.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\moha9\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.24\\microsoft.aspnetcore.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\moha9\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.57\\microsoft.windows.sdk.net.ref.10.0.19041.57.nupkg.sha512"
+  ],
+  "logs": []
+}

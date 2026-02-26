@@ -1,0 +1,12 @@
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.csproj.AssemblyReference.cache
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\bin\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.deps.json
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\bin\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.dll
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\bin\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.pdb
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.AssemblyInfoInputs.cache
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.AssemblyInfo.cs
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.csproj.CoreCompileInputs.cache
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.dll
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\refint\HanziOverlay.Core.dll
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Core.pdb
+D:\HanziLearn\HanziOverlay\HanziOverlay.Core\obj\Debug\net8.0-windows10.0.19041.0\ref\HanziOverlay.Core.dll

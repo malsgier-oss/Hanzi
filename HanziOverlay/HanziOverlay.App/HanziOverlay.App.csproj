@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\HanziOverlay.Core\HanziOverlay.Core.csproj" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.1742" />
   </ItemGroup>
 
 </Project>

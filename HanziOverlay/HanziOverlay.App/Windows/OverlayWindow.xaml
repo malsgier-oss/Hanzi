@@ -1,0 +1,15 @@
+<Window x:Class="HanziOverlay.App.Windows.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HanziOverlay" 
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Topmost="True" ShowInTaskbar="False"
+        Width="600" Height="120" ResizeMode="CanResizeWithGrip">
+    <Border Background="#E6202020" CornerRadius="4" Padding="12" BorderThickness="1" BorderBrush="#40FFFFFF">
+        <StackPanel>
+            <TextBlock x:Name="PinyinText" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,4"/>
+            <TextBlock x:Name="EnglishText" FontSize="14" Foreground="#E0E0E0" TextWrapping="Wrap" Margin="0,0,0,4"/>
+            <TextBlock x:Name="ChineseText" FontSize="12" Foreground="#C0C0C0" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Border>
+</Window>
