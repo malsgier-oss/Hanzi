@@ -1,6 +1,8 @@
+using HanziOverlay.Core.Models;
+
 namespace HanziOverlay.Core.Services.Capture;
 
 public class FrameReadyEventArgs : EventArgs
 {
-    public object Frame { get; init; } = null!;
+    public CaptureFrame Frame { get; init; } = null!;
 }

@@ -102,3 +102,4 @@ D:\HanziLearn\HanziOverlay\HanziOverlay.Tests\obj\Debug\net8.0-windows10.0.19041
 D:\HanziLearn\HanziOverlay\HanziOverlay.Tests\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Tests.pdb
 D:\HanziLearn\HanziOverlay\HanziOverlay.Tests\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Tests.genruntimeconfig.cache
 D:\HanziLearn\HanziOverlay\HanziOverlay.Tests\obj\Debug\net8.0-windows10.0.19041.0\ref\HanziOverlay.Tests.dll
+D:\HanziLearn\HanziOverlay\HanziOverlay.Tests\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.Tests.sourcelink.json

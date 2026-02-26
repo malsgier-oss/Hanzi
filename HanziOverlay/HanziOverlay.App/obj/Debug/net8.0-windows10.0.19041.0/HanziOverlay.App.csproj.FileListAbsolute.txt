@@ -29,3 +29,4 @@ D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.pdb
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.genruntimeconfig.cache
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\ref\HanziOverlay.App.dll
+D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.sourcelink.json

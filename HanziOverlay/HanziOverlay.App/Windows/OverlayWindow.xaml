@@ -5,11 +5,30 @@
         WindowStyle="None" AllowsTransparency="True" Background="Transparent"
         Topmost="True" ShowInTaskbar="False"
         Width="600" Height="120" ResizeMode="CanResizeWithGrip">
-    <Border Background="#E6202020" CornerRadius="4" Padding="12" BorderThickness="1" BorderBrush="#40FFFFFF">
+    <Border x:Name="MainBorder" Background="#E6202020" CornerRadius="4" Padding="12" BorderThickness="1" BorderBrush="#40FFFFFF"
+            MouseLeftButtonDown="Border_MouseLeftButtonDown"
+            ContextMenu="{StaticResource OverlayContextMenu}">
+        <Border.Resources>
+            <ContextMenu x:Key="OverlayContextMenu">
+                <MenuItem Header="Copy All (CN + Pinyin + EN)" Click="CopyAll_Click"/>
+                <MenuItem Header="Save line" Click="Save_Click"/>
+                <MenuItem Header="Toggle Chinese" Click="ToggleChinese_Click"/>
+                <Separator/>
+                <MenuItem Header="Opacity">
+                    <MenuItem Header="50%" Click="Opacity_Click"><MenuItem.Tag>0.5</MenuItem.Tag></MenuItem>
+                    <MenuItem Header="70%" Click="Opacity_Click"><MenuItem.Tag>0.7</MenuItem.Tag></MenuItem>
+                    <MenuItem Header="85%" Click="Opacity_Click"><MenuItem.Tag>0.85</MenuItem.Tag></MenuItem>
+                    <MenuItem Header="100%" Click="Opacity_Click"><MenuItem.Tag>1.0</MenuItem.Tag></MenuItem>
+                </MenuItem>
+            </ContextMenu>
+        </Border.Resources>
         <StackPanel>
-            <TextBlock x:Name="PinyinText" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,4"/>
-            <TextBlock x:Name="EnglishText" FontSize="14" Foreground="#E0E0E0" TextWrapping="Wrap" Margin="0,0,0,4"/>
-            <TextBlock x:Name="ChineseText" FontSize="12" Foreground="#C0C0C0" TextWrapping="Wrap"/>
+            <TextBlock x:Name="PinyinText" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,4"
+                       Cursor="Hand" MouseLeftButtonDown="Line_MouseLeftButtonDown"/>
+            <TextBlock x:Name="EnglishText" FontSize="14" Foreground="#E0E0E0" TextWrapping="Wrap" Margin="0,0,0,4"
+                       Cursor="Hand" MouseLeftButtonDown="Line_MouseLeftButtonDown"/>
+            <TextBlock x:Name="ChineseText" FontSize="12" Foreground="#C0C0C0" TextWrapping="Wrap"
+                       Cursor="Hand" MouseLeftButtonDown="Line_MouseLeftButtonDown"/>
         </StackPanel>
     </Border>
 </Window>
