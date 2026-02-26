@@ -30,6 +30,10 @@
             <TextBlock Text="Opacity:" Margin="0,4,0,0"/>
             <Slider x:Name="OpacitySlider" Minimum="0.2" Maximum="1" Value="0.85" TickFrequency="0.1" ValueChanged="OpacitySlider_ValueChanged"/>
             <CheckBox x:Name="CloudTranslationCheck" Content="Cloud translation" Margin="0,4,0,0" Checked="CloudTranslationCheck_Changed" Unchecked="CloudTranslationCheck_Changed"/>
+            <TextBlock Text="Cloud endpoint (optional):" Margin="0,4,0,0"/>
+            <TextBox x:Name="CloudEndpointBox" Margin="0,2,0,0" ToolTip="e.g. https://libretranslate.com/translate" LostFocus="CloudSettings_LostFocus"/>
+            <TextBlock Text="API key (optional, for OpenAI):" Margin="0,4,0,0"/>
+            <PasswordBox x:Name="CloudApiKeyBox" Margin="0,2,0,0" ToolTip="Leave empty for LibreTranslate" LostFocus="CloudSettings_LostFocus"/>
         </StackPanel>
         <TextBlock Grid.Row="2" Text="History (last 30 lines)" Margin="0,8,0,0" VerticalAlignment="Top"/>
         <ListBox Grid.Row="2" x:Name="HistoryList" Margin="0,24,0,0" DisplayMemberPath="CnText" SelectionChanged="HistoryList_SelectionChanged"/>

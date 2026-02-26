@@ -66,4 +66,8 @@ public partial class OverlayWindow : Window
 
     public void SetOpacity(double value) => Opacity = Math.Clamp(value, 0.2, 1.0);
     public void SetChineseVisible(bool visible) => ChineseText.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+
+    public void SetPinyin(string text) => PinyinText.Text = text ?? "";
+    public void SetEnglish(string text) => EnglishText.Text = text ?? "";
+    public void SetChinese(string text) => ChineseText.Text = text ?? "";
 }

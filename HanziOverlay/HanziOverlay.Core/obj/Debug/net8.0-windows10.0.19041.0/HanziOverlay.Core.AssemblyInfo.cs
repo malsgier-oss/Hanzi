@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HanziOverlay.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63463f206b713ef2114223904bb897d86d54fd8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94281e64dad4b0f5b10ec2d731ed03ca5c40b637")]
 [assembly: System.Reflection.AssemblyProductAttribute("HanziOverlay.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HanziOverlay.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
