@@ -87,6 +87,7 @@ public partial class ControlWindow : Window
         _translationService = new HybridTranslationService();
         _translationService.Configure(_cloudEnabled, _settings.CloudProvider, _settings.CloudEndpoint, _settings.CloudApiKey, _settings.CloudTimeoutSeconds);
         _translationService.TranslationUpdated += OnTranslationUpdated;
+        _translationService.TranslationFailed += OnTranslationFailed;
         _pipeline = new CaptureOcrPipeline(_captureService, _ocrService, _stabilizer);
         _pipeline.StableSubtitleChanged += OnStableSubtitleChanged;
 
@@ -95,6 +96,8 @@ public partial class ControlWindow : Window
         CloudTranslationCheck.IsChecked = _cloudEnabled;
         CloudEndpointBox.Text = _settings.CloudEndpoint ?? "";
         CloudApiKeyBox.Password = _settings.CloudApiKey ?? "";
+        if (CloudStatusText != null)
+            CloudStatusText.Text = _settings.CloudTranslationEnabled ? "Cloud: On" : "Cloud: Off";
         _overlayWindow.SetOpacity(_settings.Opacity);
         _overlayWindow.SetChineseVisible(_settings.ShowChinese);
 
@@ -120,6 +123,7 @@ public partial class ControlWindow : Window
         _pipeline?.Stop();
         _translationService?.Configure(false, "", "", "", 5);
         _translationService!.TranslationUpdated -= OnTranslationUpdated;
+        _translationService.TranslationFailed -= OnTranslationFailed;
         _overlayWindow?.Close();
     }
 
@@ -211,7 +215,24 @@ public partial class ControlWindow : Window
     {
         if (e.CnText != _currentCn) return;
         _currentEnglish = e.CloudEnglish;
-        Dispatcher.Invoke(() => _overlayWindow?.SetEnglish(e.CloudEnglish));
+        Dispatcher.Invoke(() =>
+        {
+            _overlayWindow?.SetEnglish(e.CloudEnglish);
+            if (CloudStatusText != null) CloudStatusText.Text = "Cloud: OK";
+        });
+    }
+
+    private void OnTranslationFailed(object? sender, TranslationFailedEventArgs e)
+    {
+        Dispatcher.Invoke(() =>
+        {
+            if (CloudStatusText != null) CloudStatusText.Text = "Cloud: Failed";
+            if (e.CnText == _currentCn && _overlayWindow != null)
+            {
+                _currentEnglish = "(translation failed)";
+                _overlayWindow.SetEnglish("(translation failed — check network or API)");
+            }
+        });
     }
 
     private void AddToHistory(string cn, string pinyin, string en, double confidence)
@@ -294,6 +315,8 @@ public partial class ControlWindow : Window
         _settings!.CloudTranslationEnabled = _cloudEnabled;
         _settingsStore?.Save(_settings);
         ApplyCloudConfig();
+        if (CloudStatusText != null)
+            CloudStatusText.Text = _cloudEnabled ? "Cloud: On" : "Cloud: Off";
     }
 
     private void SaveCloudSettings()

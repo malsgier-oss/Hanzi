@@ -15,6 +15,7 @@ public class HybridTranslationService : ITranslationService
     private int _timeoutSeconds = 5;
 
     public event EventHandler<TranslationUpdatedEventArgs>? TranslationUpdated;
+    public event EventHandler<TranslationFailedEventArgs>? TranslationFailed;
 
     public void Configure(bool cloudEnabled, string provider, string endpoint, string apiKey, int timeoutSeconds)
     {
@@ -58,10 +59,12 @@ public class HybridTranslationService : ITranslationService
                         _cache.Set(key, result);
                         TranslationUpdated?.Invoke(this, new TranslationUpdatedEventArgs { CnText = cnText, CloudEnglish = result });
                     }
+                    else
+                        TranslationFailed?.Invoke(this, new TranslationFailedEventArgs { CnText = cnText });
                 }
                 catch
                 {
-                    // silent failure
+                    TranslationFailed?.Invoke(this, new TranslationFailedEventArgs { CnText = cnText });
                 }
             }, cancellationToken);
         }

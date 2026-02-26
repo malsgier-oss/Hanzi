@@ -98,19 +98,20 @@ Or open `HanziOverlay.sln` in Visual Studio 2022 and press F5.
 | Ctrl+Alt+K       | Save current line         |
 | Ctrl+Alt+E       | Export saved lines to CSV |
 
-## Cloud translation (optional)
+## Getting translation (English line)
 
-- **Off by default**. When off, the English line shows "(translation offline)".
-- **LibreTranslate** (no API key for public endpoint):  
-  - Check "Cloud translation" in the control window.  
-  - Default endpoint: `https://libretranslate.com/translate`.  
-  - Rate limits may apply on the public server.
-- **OpenAI-compatible** (API key required):  
-  - Use an endpoint that accepts OpenAI-style chat completions (e.g. OpenAI, Azure OpenAI, or compatible APIs).  
-  - Configure endpoint and API key in settings (stored in `%AppData%\HanziOverlay\settings.json`).  
-  - **Do not hardcode API keys**; the app reads from settings. Keys are stored in plain text—keep the settings file private.
-
-(Endpoint and API key are persisted in settings; UI for editing them can be added in a future version.)
+- **By default** the app shows **(translation offline)** — no internet needed, but no real English.
+- To get **real-time English translation**:
+  1. In the control window, check **Cloud translation**.
+  2. **LibreTranslate (free, no key):**  
+     - Leave **Cloud endpoint** as `https://libretranslate.com/translate` (or another public LibreTranslate URL).  
+     - Leave **API key** empty.  
+     - Many public LibreTranslate servers are rate-limited or require a key; if you see **Cloud: Failed** or "(translation failed)", try another endpoint or add an API key if the server supports it.
+  3. **OpenAI-compatible (API key):**  
+     - Set **Cloud endpoint** to e.g. `https://api.openai.com/v1/chat/completions`.  
+     - Enter your **API key**.  
+     - The app will use the OpenAI-style API for translation.
+- **Status:** Under the cloud settings, **Cloud: Off / On / OK / Failed** shows whether cloud is enabled and whether the last request succeeded. If it says **Failed**, check your network and endpoint/API key.
 
 ## Troubleshooting
 

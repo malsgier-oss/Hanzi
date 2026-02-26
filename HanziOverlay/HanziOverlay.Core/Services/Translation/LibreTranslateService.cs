@@ -8,7 +8,10 @@ namespace HanziOverlay.Core.Services.Translation;
 
 public class LibreTranslateService
 {
-    private readonly HttpClient _client = new();
+    private static readonly HttpClient _client = new()
+    {
+        DefaultRequestHeaders = { { "User-Agent", "HanziOverlay/1.0" } }
+    };
     private string _endpoint = "https://libretranslate.com/translate";
     private int _timeoutSeconds = 5;
 

@@ -35,6 +35,7 @@
             <TextBox x:Name="CloudEndpointBox" Margin="0,2,0,0" ToolTip="e.g. https://libretranslate.com/translate" LostFocus="CloudSettings_LostFocus"/>
             <TextBlock Text="API key (optional, for OpenAI):" Margin="0,4,0,0"/>
             <PasswordBox x:Name="CloudApiKeyBox" Margin="0,2,0,0" ToolTip="Leave empty for LibreTranslate" LostFocus="CloudSettings_LostFocus"/>
+            <TextBlock x:Name="CloudStatusText" Text="Cloud: Off" Margin="0,4,0,0" Foreground="Gray" ToolTip="Shows when cloud translation is on and last request succeeded or failed"/>
         </StackPanel>
         <TextBlock Grid.Row="2" Text="History (last 30 lines)" Margin="0,8,0,0" VerticalAlignment="Top"/>
         <ListBox Grid.Row="2" x:Name="HistoryList" Margin="0,24,0,0" DisplayMemberPath="CnText" SelectionChanged="HistoryList_SelectionChanged"/>
