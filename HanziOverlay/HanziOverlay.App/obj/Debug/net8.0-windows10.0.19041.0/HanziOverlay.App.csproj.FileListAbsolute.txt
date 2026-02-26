@@ -23,10 +23,10 @@ D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.AssemblyInfoInputs.cache
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.AssemblyInfo.cs
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.csproj.CoreCompileInputs.cache
+D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.sourcelink.json
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOve.5FBA9D50.Up2Date
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.dll
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\refint\HanziOverlay.App.dll
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.pdb
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.genruntimeconfig.cache
 D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\ref\HanziOverlay.App.dll
-D:\HanziLearn\HanziOverlay\HanziOverlay.App\obj\Debug\net8.0-windows10.0.19041.0\HanziOverlay.App.sourcelink.json

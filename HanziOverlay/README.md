@@ -18,9 +18,36 @@ Windows-only desktop overlay for real-time Chinese subtitle translation. Shows *
 - **Windows 10** (build 19041+) or **Windows 11**
 - **.NET 8 Desktop Runtime**  
   - [Download](https://dotnet.microsoft.com/download/dotnet/8.0) — install "Desktop Runtime"
-- **Chinese (Simplified) OCR**  
-  - Settings → Time & language → Language & region → Add language → **中文(简体)**  
-  - Optional: Settings → Language → Preferred languages → 中文 → Options → Install "Language pack" and "Text-to-speech" / "Speech" if needed for OCR
+- **Chinese (Simplified) OCR** — see [Installing Chinese OCR](#installing-chinese-ocr) below.
+
+## Installing Chinese OCR
+
+HanziOverlay uses Windows’ built-in OCR. You must install **Chinese (Simplified)** so that text recognition works.
+
+### Windows 11
+
+1. Press **Win + I** to open **Settings**.
+2. Go to **Time & language** → **Language & region**.
+3. Under **Preferred languages**, click **Add a language**.
+4. Search for **Chinese** and choose **中文(简体)** (Chinese Simplified). Click **Next**.
+5. Check **Install language pack** (and **Text-to-speech** if you want speech). Click **Install**.
+6. Wait for the download and install to finish.
+7. (Optional) In **Preferred languages**, click the **⋯** next to 中文(简体) → **Language options** → under **Recognize text in images**, ensure it’s available (OCR uses the same language data).
+8. **Restart HanziOverlay** (or restart the PC if the app still shows “OCR: Not available”).
+
+### Windows 10
+
+1. Press **Win + I** to open **Settings**.
+2. Go to **Time & language** → **Language**.
+3. Under **Preferred languages**, click **Add a language**.
+4. Choose **中文(简体)** (Chinese Simplified) and click **Next**, then **Install**.
+5. Wait for the language pack to install.
+6. **Restart HanziOverlay** (or restart the PC if needed).
+
+### Check that it worked
+
+- Open HanziOverlay. In the control window, under the buttons it should say **OCR: Ready (Chinese)**.
+- If it still says **OCR: Not available**, restart the app or the PC and try again.
 
 ## Installation
 
@@ -36,7 +63,7 @@ dotnet restore HanziOverlay.sln
 dotnet build HanziOverlay.sln --configuration Release
 ```
 
-Run:
+Run (from the `HanziOverlay` folder you must pass `--project` because the folder contains the solution, not a single project):
 
 ```powershell
 dotnet run --project HanziOverlay.App\HanziOverlay.App.csproj

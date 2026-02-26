@@ -10,13 +10,14 @@ public partial class OverlayWindow : Window
     public OverlayWindow()
     {
         InitializeComponent();
-        MouseLeftButtonDown += (_, _) => DragMove();
     }
 
     private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        if (e.ChangedButton == MouseButton.Left && e.ClickCount == 1)
-            DragMove();
+        if (e.ChangedButton == MouseButton.Left && e.ButtonState == MouseButtonState.Pressed && e.ClickCount == 1)
+        {
+            try { DragMove(); } catch { /* ignore when button state not suitable */ }
+        }
     }
 
     private void Line_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

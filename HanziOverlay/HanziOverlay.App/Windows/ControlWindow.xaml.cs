@@ -34,7 +34,6 @@ public partial class ControlWindow : Window
     private int _pinyinRevealDelayMs = 600;
     private int _englishRevealDelayMs = 1200;
     private bool _cloudEnabled;
-    private CancellationTokenSource? _delayCts;
 
     private string _currentCn = "";
     private string _currentPinyin = "";
@@ -55,9 +54,20 @@ public partial class ControlWindow : Window
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        _overlayWindow = new OverlayWindow();
+        try
+        {
+            _overlayWindow = new OverlayWindow();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to create overlay window: {ex.Message}", "HanziOverlay", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
         _overlayWindow.Show();
         _overlayWindow.SetOpacity(OpacitySlider.Value);
+        _overlayWindow.SetPinyin("");
+        _overlayWindow.SetEnglish("Select region (Ctrl+Alt+S) to start");
+        _overlayWindow.SetChinese("");
         _overlayWindow.SaveRequested += (_, _) => SaveCurrentLine();
         _overlayWindow.ToggleChineseRequested += (_, _) => { };
         _overlayWindow.OpacityChanged += (_, opacity) => OpacitySlider.Value = opacity;
@@ -71,6 +81,7 @@ public partial class ControlWindow : Window
 
         _captureService = new WindowsGraphicsCaptureService { FPS = _settings.FPS };
         _ocrService = new WindowsOcrService();
+        UpdateOcrStatus();
         _stabilizer = new SubtitleStabilizer(requiredConsecutiveFrames: 2, similarityThreshold: 0.80, highConfidenceThreshold: 0.85);
         _pinyinService = new NPinyinService();
         _translationService = new HybridTranslationService();
@@ -106,7 +117,6 @@ public partial class ControlWindow : Window
     private void OnClosed(object? sender, EventArgs e)
     {
         _hotkeyService.Unregister();
-        _delayCts?.Cancel();
         _pipeline?.Stop();
         _translationService?.Configure(false, "", "", "", 5);
         _translationService!.TranslationUpdated -= OnTranslationUpdated;
@@ -172,50 +182,34 @@ public partial class ControlWindow : Window
     {
         if (_overlayWindow == null || _frozen) return;
 
-        _delayCts?.Cancel();
-        _delayCts = new CancellationTokenSource();
-        var ct = _delayCts.Token;
         string cn = stable.CnText;
         string pinyin = _pinyinService?.ToPinyinWithTones(cn) ?? "";
         bool showChinese = _overlayWindow.ChineseText.Visibility == Visibility.Visible;
+        bool cloudOn = _cloudEnabled;
+        string enPlaceholder = cloudOn ? "(translating...)" : "(translation offline)";
 
         _currentCn = cn;
         _currentPinyin = pinyin;
-        _currentEnglish = "";
+        _currentEnglish = enPlaceholder;
         _currentConfidence = stable.OcrConfidence;
 
+        // Update overlay immediately so pinyin and translation placeholder show in real time
         Dispatcher.Invoke(() =>
         {
             if (showChinese)
                 _overlayWindow.SetChinese(cn);
-            _overlayWindow.SetPinyin("");
-            _overlayWindow.SetEnglish("(translating...)");
-            AddToHistory(cn, pinyin, "(translating...)", stable.OcrConfidence);
+            _overlayWindow.SetPinyin(pinyin);
+            _overlayWindow.SetEnglish(enPlaceholder);
+            AddToHistory(cn, pinyin, enPlaceholder, stable.OcrConfidence);
         });
 
-        _ = Task.Run(async () =>
-        {
-            await Task.Delay(_pinyinRevealDelayMs, ct).ConfigureAwait(false);
-            if (ct.IsCancellationRequested) return;
-            Dispatcher.Invoke(() => _overlayWindow?.SetPinyin(pinyin));
-        }, ct);
-
-        bool cloudOn = _cloudEnabled;
-        _ = Task.Run(async () =>
-        {
-            await Task.Delay(_englishRevealDelayMs, ct).ConfigureAwait(false);
-            if (ct.IsCancellationRequested) return;
-            string en = cloudOn ? "(translating...)" : "(translation offline)";
-            if (!cloudOn) _currentEnglish = en;
-            Dispatcher.Invoke(() => _overlayWindow?.SetEnglish(en));
-        }, ct);
-
         if (cloudOn && _translationService != null)
-            _ = _translationService.TranslateAsync(cn, ct);
+            _ = _translationService.TranslateAsync(cn, CancellationToken.None);
     }
 
     private void OnTranslationUpdated(object? sender, TranslationUpdatedEventArgs e)
     {
+        if (e.CnText != _currentCn) return;
         _currentEnglish = e.CloudEnglish;
         Dispatcher.Invoke(() => _overlayWindow?.SetEnglish(e.CloudEnglish));
     }
@@ -325,6 +319,12 @@ public partial class ControlWindow : Window
     private void CloudSettings_LostFocus(object sender, RoutedEventArgs e)
     {
         ApplyCloudConfig();
+    }
+
+    private void UpdateOcrStatus()
+    {
+        if (OcrStatusText != null)
+            OcrStatusText.Text = _ocrService?.IsAvailable == true ? "OCR: Ready (Chinese)" : "OCR: Not available — install Chinese language pack";
     }
 
     private void HistoryList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

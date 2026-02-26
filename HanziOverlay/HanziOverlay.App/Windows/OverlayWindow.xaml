@@ -6,10 +6,9 @@
         Topmost="True" ShowInTaskbar="False"
         Width="600" Height="120" ResizeMode="CanResizeWithGrip">
     <Border x:Name="MainBorder" Background="#E6202020" CornerRadius="4" Padding="12" BorderThickness="1" BorderBrush="#40FFFFFF"
-            MouseLeftButtonDown="Border_MouseLeftButtonDown"
-            ContextMenu="{StaticResource OverlayContextMenu}">
-        <Border.Resources>
-            <ContextMenu x:Key="OverlayContextMenu">
+            MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Border.ContextMenu>
+            <ContextMenu>
                 <MenuItem Header="Copy All (CN + Pinyin + EN)" Click="CopyAll_Click"/>
                 <MenuItem Header="Save line" Click="Save_Click"/>
                 <MenuItem Header="Toggle Chinese" Click="ToggleChinese_Click"/>
@@ -21,7 +20,7 @@
                     <MenuItem Header="100%" Click="Opacity_Click"><MenuItem.Tag>1.0</MenuItem.Tag></MenuItem>
                 </MenuItem>
             </ContextMenu>
-        </Border.Resources>
+        </Border.ContextMenu>
         <StackPanel>
             <TextBlock x:Name="PinyinText" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,4"
                        Cursor="Hand" MouseLeftButtonDown="Line_MouseLeftButtonDown"/>
